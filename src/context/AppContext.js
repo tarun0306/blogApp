@@ -15,16 +15,16 @@ export function AppContextProvider({children}){
 
     //data filling  pending
 
-    async function fetchBlogPosts(page = 1){
+    async function fetchBlogPosts(page=1){
            setloading(true);
-           let url = `${baseUrl}?page=&{page}`; 
+           let url = `${baseUrl}?page=${page}`; 
          try  {
                 const result = await fetch(url);
                 const data = await result.json();
                 console.log(data);
 
                 setPage(data.page);
-                setPosts(data.post);
+                setPosts(data.posts);
                 setTotalPages(data.totalPages);
            }
            catch(err){
